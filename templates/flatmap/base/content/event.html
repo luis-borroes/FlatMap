@@ -1,0 +1,26 @@
+{% extends "flatmap/base/content.html" %}
+{% load static %}
+
+{% block title %}{{ evt.titulo }}{% endblock %}
+
+{% block bgCol %}bg-darkred{% endblock %}
+{% block txtCol %}text-white{% endblock %}
+{% block bgCol2 %}bg-white{% endblock %}
+{% block txtCol2 %}text-lightred{% endblock %}
+{% block iconCol %}white{% endblock %}
+{% block shrCol %}#f79868{% endblock %}
+
+{% block mainType %}EVENT{% endblock %}
+{% block subType %}Event detail{% endblock %}
+
+{% block cTitle %}{{ evt.titulo|upper }}{% endblock %}
+{% block cText %}{{ evt.texto }}{% endblock %}
+
+{% block imgSrc %}
+	{% if evt.imagem %}
+		{{ evt.imagem.url }}
+	{% else %}
+		{% static 'flatmap/img/trees.jpg' %}
+	{% endif %}
+{% endblock %}
+

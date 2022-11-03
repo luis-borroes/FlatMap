@@ -1,0 +1,22 @@
+{% extends "flatmap/base/contList.html" %}
+{% load static %}
+
+{% block title %}News{% endblock %}
+
+{% block bgCol %}bg-darkred{% endblock %}
+{% block txtCol %}text-white{% endblock %}
+{% block bgCol2 %}bg-white{% endblock %}
+{% block txtCol2 %}text-darkred{% endblock %}
+{% block iconCol %}white{% endblock %}
+
+{% block mainType %}NEWS{% endblock %}
+{% block subType %}Latest news{% endblock %}
+
+{% block contList %}
+	{% include "flatmap/rectBar/items.html" with items=news txtCol="text-white" bgCol="bg-lightred" shrCol="white" txtInv="text-lightred" bgInv="bg-white" shrInv="#f79868" title=cont.newsTitle text=cont.newsDesc %}
+{% endblock %}
+
+{% block imgSrc %}
+	{% static 'flatmap/img/trees.jpg' %}
+{% endblock %}
+

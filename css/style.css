@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: "righteous";
+	src: url("font/Righteous-Regular.ttf");
+}
+
+@font-face {
+	font-family: "exo";
+	src: url("font/Exo-Light.ttf");
+}
+
+@font-face {
+	font-family: "exo-reg";
+	src: url("font/Exo-Regular.ttf");
+}
+
+@font-face {
+	font-family: "exo-med";
+	src: url("font/Exo-Medium.ttf");
+}
+
+@font-face {
+	font-family: "exo-bold";
+	src: url("font/Exo-ExtraBold.ttf");
+}
+
+@font-face {
+	font-family: "lato";
+	src: url("font/Lato-Regular.ttf");
+}
+
+@layer components {
+	.nav-item {
+		@apply border-b border-gray-200 flex text-darkred hover:shadow-inner hover:bg-red-50 text-right transition ease-in-out duration-300;
+	};
+	.nav-text {
+		@apply flex-1 pr-3 lg:pr-7 py-6 font-med transition-all duration-300;
+	};
+
+	.frame {
+		@apply pr-5 pb-5;
+	};
+	.pane {
+		@apply ml-5 mt-5 overflow-auto rounded-xl border border-gray-200 bg-white shadow transition-all duration-300;
+	};
+
+	@keyframes radialSwell {
+		from {
+		  r: 0.8%;
+		}
+
+		50% {
+		  r: 3%;
+		}
+		
+		to {
+		  r: 0.8%;
+		}
+	  }
+	  
+	  .mapPoint {
+		animation-duration: 1s;
+		animation-iteration-count: infinite;
+		animation-name: radialSwell;
+	  }
+}

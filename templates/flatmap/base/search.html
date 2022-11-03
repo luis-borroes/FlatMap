@@ -1,0 +1,29 @@
+{% extends "flatmap/base.html" %}
+
+{% block title %}Search{% endblock %}
+
+{% block content %}
+
+<div class="w-full h-full flex flex-col bg-lighterred">
+	<div class="relative px-8 space-x-6 flex flex-row flex-none">
+		<div class="relative px-5 pt-5 flex-initial">
+			<a href="{% url 'flatmap:mapsIPSS' %}">
+				<p class="text-md font-reg {% if pageType == 'mapa' %}font-bold border-b border-darkred{% endif %} text-darkred transition-all duration-300">
+					Map
+				</p>
+			</a>
+		</div>
+		<div class="relative px-5 pt-5 flex-initial">
+			<a href="{% url 'flatmap:listIPSS' %}">
+				<p class="text-md font-reg {% if pageType == 'filtros' %}font-bold border-b border-darkred{% endif %} text-darkred transition-all duration-300">
+					Search
+				</p>
+			</a>
+		</div>
+	</div>
+
+	{% block subcontent %}{% endblock %}
+</div>
+
+
+{% endblock %}

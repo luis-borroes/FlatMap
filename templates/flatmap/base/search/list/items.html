@@ -1,0 +1,28 @@
+{% load static %}
+
+<div class="frame grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+	{% for inst in insts %}
+		<div class="relative mt-5 ml-5 flex items-start pane">
+			<div class="px-6 py-5 h-full w-full bg-opacity-40">
+				<div class="flex-1 min-w-0 overflow-x-hidden">
+					<a href="{{ inst.get_absolute_url }}">
+						<p class="text-lg leading-5 font-title font-semibold">{{ inst.denominacao }}</p>
+						<p class="text-sm font-reg text-gray-500">{{ inst.sede.morada }}</p>
+						<br>
+						<p class="text-sm font-med">{{ inst.sede.freguesia.denominacao }}</p>
+						<p class="text-sm font-med">{{ inst.sede.concelho.denominacao }}</p>
+						<p class="text-sm font-med font-bold">{{ inst.sede.distrito.denominacao }}</p>
+						<br><br>
+					</a>
+					<img class="w-auto h-10 flex-shrink-0 absolute left-4 bottom-4" src="{% static 'flatmap/img/flatmap.png' %}" alt="">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-5 w-6 mt-3 mx-auto absolute right-4 bottom-4">
+						<path fill="black" d="M352 320c-22.608 0-43.387 7.819-59.79 20.895l-102.486-64.054a96.551 96.551 0 0 0 0-41.683l102.486-64.054C308.613 184.181 329.392 192 352 192c53.019 0 96-42.981 96-96S405.019 0 352 0s-96 42.981-96 96c0 7.158.79 14.13 2.276 20.841L155.79 180.895C139.387 167.819 118.608 160 96 160c-53.019 0-96 42.981-96 96s42.981 96 96 96c22.608 0 43.387-7.819 59.79-20.895l102.486 64.054A96.301 96.301 0 0 0 256 416c0 53.019 42.981 96 96 96s96-42.981 96-96-42.981-96-96-96z">
+						</path>
+					</svg>
+				</div>
+			</div>
+		</div>
+	{% empty %}
+		<h5>Lista vazia!</h5>
+	{% endfor %}
+</div>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{% block title %}FlatMap{% endblock %}</title>
+
+	{% load static %}
+
+    <link rel="shortcut icon" type="image/png" href="{% static 'flatmap/img/favicon.png' %}"/>
+	<link rel="stylesheet" href="{% static 'flatmap/style.css' %}?cache={{ staticCache }}">
+	<script defer src="{% static 'flatmap/utils.js' %}?cache={{ staticCache }}"></script>
+	<script defer src="https://unpkg.com/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
+	<script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
+
+	{% block head %}{% endblock %}
+
+</head>
+
+<body class="bg-white h-full" x-data="{ sideBarOpen: $persist(true) }">
+	<header class="z-50 relative shadow-top">
+		<nav aria-label="Top">
+			<div class="w-full py-3 flex items-center justify-between">
+				<div class="flex items-center px-5 lg:pl-20 transition-all duration-300">
+					<button class="flex-1 mr-1 sm:mr-5 transition-all duration-300"
+					@click="sideBarOpen = !sideBarOpen;
+							$refs.navBar.classList.add('transition-all', 'duration-300')">
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#f15f63" class="h-8 w-8">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+						</svg>
+					</button>
+					<a href="{% url 'flatmap:index' %}" class="flex-none">
+						<img class="h-10 w-auto" src="{% static 'flatmap/img/flatmap.png' %}" alt="">
+					</a>
+				</div>
+				{% comment %}
+				<div class="flex items-center justify-end flex-col sm:flex-row divide-y sm:divide-x sm:divide-y-0 divide-darkred">
+					<div class="px-2 lg:px-5 lg:flex-none transition-all duration-300">
+						<a href="#" class="inline-block p-2 rounded-md text-base font-semibold text-darkred hover:bg-red-50">
+							ÁREA&nbsp;RESERVADA
+						</a>
+					</div>
+					<div class="px-2 lg:px-5 lg:pr-20 transition-all duration-300">
+						<a href="#" class="inline-block p-2 rounded-md text-base font-semibold text-darkred hover:bg-red-50">
+							REGISTAR
+						</a>
+					</div>
+				</div>
+				{% endcomment %}
+			</div>
+		</nav>
+	</header>
+
+	<div class="min-h-full flex flex-row">
+		{% include "flatmap/navBar/bar.html" %}
+
+		<div class="z-10 w-full relative overflow-x-clip">
+			{% block content %}{% endblock %}
+		</div>
+	</div>
+</body>
+</html>

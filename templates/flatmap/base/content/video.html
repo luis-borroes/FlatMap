@@ -1,0 +1,29 @@
+{% extends "flatmap/base/content.html" %}
+{% load static %}
+
+{% block title %}{{ vid.titulo }}{% endblock %}
+
+{% block bgCol %}bg-darkred{% endblock %}
+{% block txtCol %}text-white{% endblock %}
+{% block bgCol2 %}bg-white{% endblock %}
+{% block txtCol2 %}text-lightred{% endblock %}
+{% block iconCol %}white{% endblock %}
+{% block shrCol %}#fcb248{% endblock %}
+
+{% block mainType %}VIDEO{% endblock %}
+{% block subType %}Video detail{% endblock %}
+
+{% block cTitle %}{{ vid.titulo|upper }}{% endblock %}
+{% block cText %}
+<iframe width="560" height="315" src="{{ vid.link }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+{% endblock %}
+
+{% block imgSrc %}
+	{% if vid.imagem %}
+		{{ vid.imagem.url }}
+	{% else %}
+		{% static 'flatmap/img/trees.jpg' %}
+	{% endif %}
+{% endblock %}
+

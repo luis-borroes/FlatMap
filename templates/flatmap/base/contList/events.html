@@ -1,0 +1,22 @@
+{% extends "flatmap/base/contList.html" %}
+{% load static %}
+
+{% block title %}Events{% endblock %}
+
+{% block bgCol %}bg-darkred{% endblock %}
+{% block txtCol %}text-white{% endblock %}
+{% block bgCol2 %}bg-white{% endblock %}
+{% block txtCol2 %}text-darkred{% endblock %}
+{% block iconCol %}white{% endblock %}
+
+{% block mainType %}EVENTS{% endblock %}
+{% block subType %}Latest events{% endblock %}
+
+{% block contList %}
+	{% include "flatmap/rectBar/items.html" with items=evts txtCol="text-white" bgCol="bg-lightred" shrCol="white" txtInv="text-lightred" bgInv="bg-white" shrInv="#f79868" title=cont.evtsTitle text=cont.evtsDesc %}
+{% endblock %}
+
+{% block imgSrc %}
+	{% static 'flatmap/img/trees.jpg' %}
+{% endblock %}
+

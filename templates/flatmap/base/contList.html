@@ -1,0 +1,27 @@
+{% extends "flatmap/base.html" %}
+
+{% block content %}
+
+<div class="relative lg:flex lg:flex-col h-full">
+	<div class="flex-none">
+		<img class="h-56 md:h-66 lg:h-80 w-full object-cover" src="{% block imgSrc %}{% endblock %}" alt="">
+	</div>
+	<div class="relative grow lg:grid lg:grid-cols-7">
+		<div class="p-6 lg:col-span-2 {% block bgCol %}{% endblock %}">
+			<div class="mx-auto lg:max-w-lg {% block txtCol %}{% endblock %}">
+				<p class="lg:mt-10 mb-5 text-4xl lg:text-4xl xl:text-5xl 2xl:text-6xl text-center font-title font-black tracking-wide">{% block mainType %}{% endblock %}</p>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 120" class="h-3 xl:h-4 2xl:h-5 mx-auto">
+					<polygon fill="{% block iconCol %}{% endblock %}" points="10,60 110,10 210,60 110,110"/>
+				</svg>
+				<p class="mt-5 text-xl xl:text-2xl 2xl:text-3xl text-title font-black text-center">{% block subType %}{% endblock %}</p>
+			</div>
+		</div>
+		<div class="flex flex-col lg:col-span-5 {% block bgCol2 %}{% endblock %}">
+			<div class="grow grid grid-cols-1 md:grid-cols-2">
+				{% block contList %}{% endblock %}
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

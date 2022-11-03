@@ -1,0 +1,20 @@
+{# the transition and duration classes are added when the hamburger is pressed #}
+{# this prevents the navbar from sliding in every page load (when active) #}
+<div x-ref="navBar" class="z-40 w-40 lg:w-60 -ml-40 lg:-ml-60 relative flex-none shadow-side" :class="{ 'ml-0 lg:ml-0': sideBarOpen }">
+	<div class="flex flex-col">
+		<nav aria-label="Sidebar">
+			<a href="{% url 'flatmap:mapsIPSS' %}" class="nav-item{% if sideBar == 'search' %} bg-red-50{% endif %}">
+				<span class="nav-text">Map&nbsp;&nbsp;⯆</span>
+			</a>
+			<a href="{% url 'flatmap:evtsList' %}" class="nav-item{% if sideBar == 'events' %} bg-red-50{% endif %}">
+				<span class="nav-text">Events&nbsp;&nbsp;⯆</span>
+			</a>
+			<a href="{% url 'flatmap:newsList' %}" class="nav-item{% if sideBar == 'news' %} bg-red-50{% endif %}">
+				<span class="nav-text">News&nbsp;&nbsp;⯆</span>
+			</a>
+			<a href="{% url 'flatmap:about' %}" class="nav-item{% if sideBar == 'about' %} bg-red-50{% endif %}">
+				<span class="nav-text">About&nbsp;&nbsp;⯆</span>
+			</a>
+		</nav>
+	</div>
+</div>

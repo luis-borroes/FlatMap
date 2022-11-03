@@ -1,0 +1,60 @@
+{% extends "flatmap/base/search.html" %}
+
+{% block title %}Search{% endblock %}
+
+{% block subcontent %}
+<div class="relative frame flex flex-none justify-center">
+	<div class="pane p-5 w-full bg-lightred">
+		<form x-ref="form" action="{% url 'flatmap:listIPSS' %}" method="GET">
+			<div class="">
+				<label for="q" class="block text-sm font-med text-gray-700">Search</label>
+				<input id="query" type="text" name="q" value="{{ post.q }}" class="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Pesquisa...">
+			</div>
+			<div class="flex flex-row mt-3">
+				<div class="flex-1 mr-3">
+					<label for="d" class="block text-sm font-med text-gray-700">District</label>
+					<select id="distrito" name="d" onchange="this.form.submit()" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+						<option value="">---</option>
+						{% for distrito in dists %}
+							<option {% if distrito.slug|stringformat:'s' == post.d %}selected {% endif %}value="{{ distrito.slug }}">{{ distrito.denominacao }}</option>
+						{% endfor %}
+					</select>
+				</div>
+				<div class="flex-1 mr-3">
+					<label for="c" class="block text-sm font-med text-gray-700">Council</label>
+					<select id="concelho" name="c" onchange="this.form.submit()" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+						<option value="">---</option>
+						{% for concelho in couns %}
+							<option {% if concelho.slug|stringformat:'s' == post.c %}selected {% endif %}value="{{ concelho.slug }}">{{ concelho.denominacao }}</option>
+						{% endfor %}
+					</select>
+				</div>
+				<div class="flex-1">
+					<label for="f" class="block text-sm font-med text-gray-700">Parish</label>
+					<select id="freguesia" name="f" onchange="this.form.submit()" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+						<option value="0">---</option>
+						{% for freguesia in fregs %}
+							<option {% if freguesia.id|stringformat:'s' == post.f %}selected {% endif %}value="{{ freguesia.id }}">{{ freguesia.denominacao }}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
+			<div class="hidden">
+				{% if numPages > 1 %}
+					{% include "flatmap/utils/paginator/first.html" %}
+				{% endif %}
+			</div>
+		</form>
+	</div>
+</div>
+
+<div class="h-full relative">
+	{% include "flatmap/base/search/list/items.html" %}
+
+	{% if numPages > 1 %}
+		 {% include "flatmap/utils/paginator/after.html" %}
+	{% endif %}
+</div>
+
+{% endblock %}

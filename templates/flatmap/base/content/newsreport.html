@@ -1,0 +1,26 @@
+{% extends "flatmap/base/content.html" %}
+{% load static %}
+
+{% block title %}{{ newRep.titulo }}{% endblock %}
+
+{% block bgCol %}bg-darkred{% endblock %}
+{% block txtCol %}text-white{% endblock %}
+{% block bgCol2 %}bg-white{% endblock %}
+{% block txtCol2 %}text-lightred{% endblock %}
+{% block iconCol %}white{% endblock %}
+{% block shrCol %}#f79868{% endblock %}
+
+{% block mainType %}NEWS REPORT{% endblock %}
+{% block subType %}News report detail{% endblock %}
+
+{% block cTitle %}{{ newRep.titulo|upper }}{% endblock %}
+{% block cText %}{{ newRep.texto }}{% endblock %}
+
+{% block imgSrc %}
+	{% if newRep.imagem %}
+		{{ newRep.imagem.url }}
+	{% else %}
+		{% static 'flatmap/img/trees.jpg' %}
+	{% endif %}
+{% endblock %}
+

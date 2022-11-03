@@ -1,0 +1,13 @@
+{% extends "flatmap/base.html" %}
+
+{% block title %}IPSS{% endblock %}
+
+{% block content %}
+
+<div class="flex flex-col h-full">
+	{% include "flatmap/rectBar/bar.html" with items=evts txtCol="text-white" bgCol="bg-darkred" shrCol="white" txtInv="text-darkred" bgInv="bg-white" shrInv="#f79868" title=cont.evtsTitle text=cont.evtsDesc %}
+	{% include "flatmap/rectBar/bar.html" with items=news txtCol="text-white" bgCol="bg-lightblue" shrCol="white" txtInv="text-lightblue" bgInv="bg-white" shrInv="#73cfe7" title=cont.newsTitle text=cont.newsDesc %}
+	{% include "flatmap/rectBar/bar.html" with items=vids txtCol="text-black" bgCol="bg-lightyellow" shrCol="white" txtInv="text-darkyellow" bgInv="bg-white" shrInv="#fcb248" title=cont.vidsTitle text=cont.vidsDesc %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "flatmap/base/search.html" %}
+{% load static %}
+
+{% block title %}{{ inst.denominacao }}{% endblock %}
+
+{% block subcontent %}
+
+<div class="h-full relative frame">
+	{% include "flatmap/base/search/map/crumbs.html" %}
+
+	<div class="relative sm:flex flex-row">
+		{% include "flatmap/base/search/map/mapComp.html" %}
+
+		<div class="relative p-5 flex-1 items-start pane">
+			<div class="flex-1 min-w-0 overflow-x-hidden">
+				<p class="text-2xl leading-5 font-title font-bold">{{ inst.denominacao }}</p>
+				<div class="relative flex flex-none justify-center">
+					<div class="pane p-5 ml-0 w-full bg-lightred">
+						<div class="mb-5">
+							<p class="block text-sm font-med text-gray-700">Vacancies</label>
+							<input type="text" value="30 / 50 (sample data)" readonly class="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+						</div>
+						<div class="">
+							<p class="block text-sm font-med text-gray-700">Address</label>
+							<input type="text" value="{{ inst.sede.morada }}" readonly class="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+						</div>
+						<br>
+						<p class="text-sm font-med">{{ inst.sede.freguesia.denominacao }}</p>
+						<p class="text-sm font-med">{{ inst.sede.concelho.denominacao }}</p>
+						<p class="text-sm font-med font-bold">{{ inst.sede.distrito.denominacao }}</p>
+					</div>
+				</div>
+				<br><br>
+
+				<img class="w-auto h-10 flex-shrink-0 absolute left-4 bottom-4" src="{% static 'flatmap/img/flatmap.png' %}" alt="">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-5 w-6 mt-3 mx-auto absolute right-4 bottom-4">
+					<path fill="black" d="M352 320c-22.608 0-43.387 7.819-59.79 20.895l-102.486-64.054a96.551 96.551 0 0 0 0-41.683l102.486-64.054C308.613 184.181 329.392 192 352 192c53.019 0 96-42.981 96-96S405.019 0 352 0s-96 42.981-96 96c0 7.158.79 14.13 2.276 20.841L155.79 180.895C139.387 167.819 118.608 160 96 160c-53.019 0-96 42.981-96 96s42.981 96 96 96c22.608 0 43.387-7.819 59.79-20.895l102.486 64.054A96.301 96.301 0 0 0 256 416c0 53.019 42.981 96 96 96s96-42.981 96-96-42.981-96-96-96z">
+					</path>
+				</svg>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

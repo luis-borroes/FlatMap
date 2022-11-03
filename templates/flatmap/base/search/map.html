@@ -1,0 +1,22 @@
+{% extends "flatmap/base/search.html" %}
+{% load static %}
+
+{% block title %}Map{% endblock %}
+
+{% block subcontent %}
+<div class="h-full relative frame">
+	{% include "flatmap/base/search/map/crumbs.html" %}
+
+	<div x-data="{ hover: 'Select region...' }" 
+		class="relative sm:flex flex-row">
+		{% include "flatmap/base/search/map/mapComp.html" %}
+
+		{% if showInstsPane %}
+			<div class="flex-1 p-5 pane">
+				{% include "flatmap/base/search/map/insts.html" %}
+			</div>
+		{% endif %}
+	</div>
+</div>
+
+{% endblock %}

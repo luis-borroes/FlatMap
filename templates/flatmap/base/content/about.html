@@ -1,0 +1,22 @@
+{% extends "flatmap/base/content.html" %}
+{% load static %}
+
+{% block title %}{{ cont.title }}{% endblock %}
+
+{% block bgCol %}bg-darkred{% endblock %}
+{% block txtCol %}text-white{% endblock %}
+{% block bgCol2 %}bg-white{% endblock %}
+{% block txtCol2 %}text-lightred{% endblock %}
+{% block iconCol %}white{% endblock %}
+{% block shrCol %}white{% endblock %}
+
+{% block mainType %}{{ cont.title|upper }}{% endblock %}
+{% block subType %}{{ cont.subtitle }}{% endblock %}
+
+{% block cTitle %}{{ cont.subtitle|upper }}{% endblock %}
+{% block cText %}{{ cont.text|safe }}{% endblock %}
+
+{% block imgSrc %}
+	{% static 'flatmap/img/us.jpg' %}
+{% endblock %}
+

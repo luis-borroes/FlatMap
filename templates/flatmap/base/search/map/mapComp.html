@@ -1,0 +1,47 @@
+<div class="flex-none sm:w-80 lg:w-96 p-5 pane
+			{% if not showInstsPane %} flex-grow{% endif %}">
+	<svg class="mx-auto max-w-xs transition-all duration-300" viewBox="{{ viewBox }}" xmlns="http://www.w3.org/2000/svg">
+		{% for area in areas %}
+			<polygon
+			{% if clickable %}
+			@click="window.location.href = '{% url urlType area.id %}'"
+			@mouseover="hover = '{{ area.denominacao }}'"
+			{% endif %}
+			class='fill-darkred
+				stroke-[0.13%] stroke-white
+				{% if clickable %}cursor-pointer hover:fill-lightred {% endif %}'
+			points='{{ area.poly }}'/>
+		{% endfor %}
+
+		{% if not inst %}
+			{% for point in points %}
+				<circle class="fill-orange-100 cursor-pointer
+							hover:fill-lightyellow hover:mapPoint"
+				x-ref="c{{ point.pk }}"
+				@click="window.location.href = '{{ point.instituicao.get_absolute_url }}'"
+				@mouseover="scrollParentToChild($refs.elist, $refs.e{{ point.pk }});
+							$refs.e{{ point.pk }}.classList.add('bg-gray-100')"
+				@mouseout="$refs.e{{ point.pk }}.classList.remove('bg-gray-100')"
+				cx="{{ point.longitude }}" cy="{{ point.latitude }}" r="0.8%"/>
+			{% endfor %}
+
+		{% else %}
+			<circle class="fill-lightyellow mapPoint"
+			cx="{{ points.0.longitude }}" cy="{{ points.0.latitude }}" r="0.8%"/>
+		{% endif %}
+	</svg>
+	
+	{% if clickable %}	
+		<div class="inline-flex w-full justify-center">
+			<div class="flex-initial text-center mt-3 px-2.5 py-0.5 rounded-md text-md font-medium bg-darkred shadow">
+				<div x-text="hover" class="text-white"></div>
+			</div>
+		</div>
+	{% else %}
+		<div class="inline-flex w-full justify-center">
+			<div class="flex-initial text-center mt-3 px-2.5 py-0.5 rounded-md text-md font-medium bg-darkred shadow">
+				<div class="text-white">{{ areas.0.denominacao }}</div>
+			</div>
+		</div>
+	{% endif %}
+</div>
